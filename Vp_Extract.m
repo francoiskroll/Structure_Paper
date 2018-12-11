@@ -162,6 +162,9 @@ for f = O' % For each Excel file
             % 3 - Fish ID 
             % 4 - Delta px
     fid = fopen(strcat(folder_path,'\',folder_open(f).name)); % Open it
+    % for macOS, use: 
+    % fid = fopen(strcat(folder_path,'/',folder_open(f).name));
+    
     if f == O(1) % For the first file Skip the first blank lines
         raw_text = textscan(fid,... % Read in the data
             '%*f32 %f32 %*f32 %f32 %*1s %s %f32','headerlines',192 + 1);
@@ -919,4 +922,6 @@ clear a f p t
 
 %% Save WorkSpace 
 
-save(strcat(save_pathname,'\',save_name,'.mat'),'-v7.3'); % save data  
+save(strcat(save_pathname,'\',save_name,'.mat'),'-v7.3'); % save data
+% for macOS, use:
+% save(strcat(save_pathname,'/',save_name,'.mat'),'-v7.3');
